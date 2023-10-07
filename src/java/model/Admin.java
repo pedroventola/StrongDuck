@@ -6,12 +6,12 @@ package model;
 
 /**
  *
- * @author alunos
+ * @author pedro
  */
-public class Usuario {
-    // Atributos
-    private String login;
-    private String senha;    
+public class Admin {
+    
+        private String login;
+        private String senha;    
             
     //Métodos
     public String getLogin() {
@@ -31,3 +31,5 @@ public class Usuario {
     }
     
 }
+    
+

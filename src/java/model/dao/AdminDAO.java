@@ -4,25 +4,26 @@
  */
 package model.dao;
 
-import model.Usuario;
-import java.sql.*;
-import java.util.concurrent.locks.StampedLock;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import model.Admin;
 import util.ConectaDB;
 
 /**
  *
- * @author alunos
+ * @author pedro
  */
-public class UsuarioDao {
-    // Atrib.
+public class AdminDAO {
     
-    // Métodos
-    public Usuario consultar(Usuario usuario) throws ClassNotFoundException{        
+     // Métodos
+    public Admin consultar(Admin admin) throws ClassNotFoundException{        
         Connection conexao = null;
         try{
             conexao = ConectaDB.conectar();
             Statement stmt = conexao.createStatement();
-            String sql = "SELECT * from usuario WHERE login = '" + usuario.getLogin() + "' and senha = '" + usuario.getSenha() + "'";
+            String sql = "SELECT * from admin WHERE login = '" + admin.getLogin() + "' and senha = '" + admin.getSenha() + "'";
             ResultSet rs = stmt.executeQuery(sql);
             
             int n_reg = 0;
@@ -34,7 +35,7 @@ public class UsuarioDao {
             if (n_reg == 0){
                 return null;
             }else{
-                return usuario;
+                return admin;
             }
         } catch(SQLException ex){
             System.out.println(" Exception: " + ex.toString());
@@ -42,3 +43,5 @@ public class UsuarioDao {
         }         
     }
 }
+    
+
