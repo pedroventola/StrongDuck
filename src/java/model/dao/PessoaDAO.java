@@ -6,8 +6,8 @@ package model.dao;
 
 /**
  *
- * @author alunos
+ * @author pedro
  */
-public class ClienteDAO {
+public class PessoaDAO {
     
 }

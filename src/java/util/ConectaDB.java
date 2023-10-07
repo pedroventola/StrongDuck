@@ -15,7 +15,7 @@ public class ConectaDB {
         Connection conn = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/clinica","root","");        
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/academia","root","");        
         }
         catch(SQLException ex){}
         return conn;        

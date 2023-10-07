@@ -3,27 +3,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package control;
-import model.Usuario;
-import model.dao.UsuarioDao;
+
+import model.Admin;
+import model.dao.AdminDAO;
 
 /**
  *
- * @author alunos
+ * @author pedro
  */
-public class ControleUsuario {
+public class ControleAdmin {
     // Atributos
     
     // Métodos
     public boolean logar(String login, String senha) throws ClassNotFoundException{
-        Usuario usuario = new Usuario();
-        usuario.setLogin(login);
-        usuario.setSenha(senha);
+        Admin admin = new Admin();
+        admin.setLogin(login);
+        admin.setSenha(senha);
         
-        UsuarioDao usuarioDAO = new UsuarioDao();
-        if (usuarioDAO.consultar(usuario)==null){
+        AdminDAO adminDAO = new AdminDAO();
+        if (adminDAO.consultar(admin)==null){
             return false;
         }else{
             return true;
         }        
     }           
 }
+
