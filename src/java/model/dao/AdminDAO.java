@@ -13,7 +13,7 @@ import util.ConectaDB;
 
 /**
  *
- * @author pedro
+ * @author Pedro Ventola
  */
 public class AdminDAO {
     
