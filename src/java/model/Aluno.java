@@ -13,16 +13,14 @@ public class Aluno extends Pessoa {
     private int matricula;
     private String plano;
     private Date dataMatricula;
-    private String curso;
     private int periodo;
 
     // Construtor
-    public Aluno(String nome, String sexo, int idade, String telefone, String email, String enderecoCep, int matricula, String plano, Date dataMatricula, String curso, int periodo) {
+    public Aluno(String nome, String sexo, int idade, String telefone, String email, String enderecoCep, int matricula, String plano, Date dataMatricula,int periodo) {
         super(nome, sexo, idade, telefone, email, enderecoCep);
         this.matricula = matricula;
         this.plano = plano;
         this.dataMatricula = dataMatricula;
-        this.curso = curso;
         this.periodo = periodo;
     }
     
@@ -50,14 +48,6 @@ public class Aluno extends Pessoa {
 
     public void setDataMatricula(Date dataMatricula) {
         this.dataMatricula = dataMatricula;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
     }
 
     public int getPeriodo() {

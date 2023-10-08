@@ -30,8 +30,7 @@ public class AlunoDAO {
             // Constrói a consulta SQL para inserir um novo aluno no banco de dados.
             String sql = "INSERT INTO aluno(matricula, nome, plano, data_matricula, curso, periodo, endereco_cep) "
                     + "VALUES(" + aluno.getMatricula() + ",'" + aluno.getNome() + "','" + aluno.getPlano()
-                    + "','" + aluno.getDataMatricula() + "','" + aluno.getCurso()
-                    + "'," + aluno.getPeriodo() + ",'" + aluno.getEnderecoCep() + "')";
+                    + "','" + aluno.getDataMatricula() + "','" + "'," + aluno.getPeriodo() + ",'" + aluno.getEnderecoCep() + "')";
 
             stmt.executeUpdate(sql); // Executa a consulta SQL (Insert).
             System.out.println(" Registro Inserido! ");
