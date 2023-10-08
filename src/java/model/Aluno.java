@@ -7,7 +7,7 @@ import java.sql.Date;
 
 /**
  *
- * @author pedro
+ * @author Pedro Ventola
  */
 public class Aluno extends Pessoa {
     private int matricula;
