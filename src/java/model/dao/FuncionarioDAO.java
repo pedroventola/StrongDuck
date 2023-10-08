@@ -1,6 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Data Access Object (DAO) para a entidade Funcionário.
  */
 package model.dao;
 
@@ -10,155 +9,155 @@ import java.util.List;
 import model.Funcionario;
 import util.ConectaDB;
 
-/**
- *
- * @author alunos
- */
-
-    // Data Access Object
 public class FuncionarioDAO {
-    //Atrib.
-    
-    //Métodos
+
+    // Método para cadastrar um funcionário.
     public boolean cadastrar(Funcionario funcionario) {
         Connection conexao = null;
-        
-        try{
+
+        try {
             conexao = ConectaDB.conectar();
             Statement stmt = conexao.createStatement();
-            
-            //INSERT into funcionario(matric, nome, cargo, end_cep, end_comp) values('123','Garibaldi','Diretor', 'Av. Japão','Predio A - n.1234');            
-            String sql = "INSERT into funcionario(matric, nome, cargo, end_cep, end_comp) " + 
-                    "values('" + funcionario.getMatric() + "','" + funcionario.getNome() + "','" + funcionario.getCargo() +
-                    "', '" + funcionario.getEnderecoCep() + "','" + funcionario.getEnderecoComp()+ "')";
-            
-            stmt.executeUpdate(sql); // Insert, Delete ou Update            
-            System.out.println(" Registro Inserido! ");            
+
+            // Constrói a consulta SQL para inserir um novo funcionário no banco de dados.
+            String sql = "INSERT INTO funcionario(matric, nome, cargo, end_cep, end_comp, data_contrato, salario) "
+                    + "VALUES('" + funcionario.getCpf() + "','" + funcionario.getNome() + "','" + funcionario.getCargo()
+                    + "','" + funcionario.getEnderecoCep() + "','" + funcionario.getEnderecoComp()
+                    + "','" + funcionario.getDataContrato() + "','" + funcionario.getSalario() + "')";
+
+            stmt.executeUpdate(sql); // Executa a consulta SQL (Insert).
+            System.out.println(" Registro Inserido! ");
             conexao.close();
             return true;
-                   
-        } catch(ClassNotFoundException | SQLException ex){
+
+        } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(" Exception: " + ex.toString());
             return false;
         }
     }
 
+    // Método para consultar um funcionário por CPF.
     public Funcionario consultarMatric(Funcionario funcionario) {
         Connection conexao = null;
-        
-        try{
+
+        try {
             conexao = ConectaDB.conectar();
             Statement stmt = conexao.createStatement();
-            String sql = "SELECT * from funcionario WHERE matric = '" + funcionario.getMatric()+ "'";
+            String sql = "SELECT * from funcionario WHERE matric = '" + funcionario.getCpf() + "'";
             ResultSet rs = stmt.executeQuery(sql);
-            
+
             int n_reg = 0;
-            while (rs.next()){
-                // "popular o obj funcionario"
-                funcionario.setMatric(rs.getString("matric"));
+            while (rs.next()) {
+                // Preenche o objeto funcionario com os dados do resultado da consulta.
+                funcionario.setCpf(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setCargo(rs.getString("cargo"));
                 funcionario.setEnderecoCep(rs.getString("end_cep"));
                 funcionario.setEnderecoComp(rs.getString("end_comp"));
+                funcionario.setDataContrato(rs.getDate("data_contrato"));
+                funcionario.setSalario(rs.getFloat("salario"));
                 n_reg++;
             }
             conexao.close();
-                   
-            if (n_reg == 0){
+
+            if (n_reg == 0) {
                 return null;
-            }else{
+            } else {
                 return funcionario;
             }
-        } catch(ClassNotFoundException | SQLException ex){
+        } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(" Exception: " + ex.toString());
             return null;
         }
     }
-    
-    //Return Tipo método
-    public List consultarGeral() {
+
+    // Método para consultar todos os funcionários.
+    public List<Funcionario> consultarGeral() {
         Connection conexao = null;
-        
-        List minha_lista = new ArrayList();
-        
-        try{
+
+        List<Funcionario> minha_lista = new ArrayList<>();
+
+        try {
             conexao = ConectaDB.conectar();
             Statement stmt = conexao.createStatement();
             String sql = "SELECT * from funcionario";
             ResultSet rs = stmt.executeQuery(sql);
-            
+
             int n_reg = 0;
-            while (rs.next()){  
+            while (rs.next()) {
                 Funcionario funcionario = new Funcionario();
-                
-                funcionario.setMatric(rs.getString("matric"));
+
+                // Preenche o objeto funcionario com os dados do resultado da consulta.
+                funcionario.setCpf(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setCargo(rs.getString("cargo"));
                 funcionario.setEnderecoCep(rs.getString("end_cep"));
                 funcionario.setEnderecoComp(rs.getString("end_comp"));
-                
+                funcionario.setDataContrato(rs.getDate("data_contrato"));
+                funcionario.setSalario(rs.getFloat("salario"));
+
                 minha_lista.add(funcionario);
-                        
+
                 n_reg++;
             }
             conexao.close();
-                   
-            if (n_reg == 0){
+
+            if (n_reg == 0) {
                 return null;
-            }else{
+            } else {
                 return minha_lista;
             }
-            
-        } catch(ClassNotFoundException | SQLException ex){
+
+        } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(" Exception: " + ex.toString());
             return null;
         }
     }
-    
+
+    // Método para excluir um funcionário por CPF.
     public boolean excluir(Funcionario funcionario) {
         Connection conexao = null;
-        
-        try{
+
+        try {
             conexao = ConectaDB.conectar();
             Statement stmt = conexao.createStatement();
-            
-            //DELETE FROM funcionario WHERE matric = '333';;            
-            String sql = "DELETE FROM funcionario WHERE matric = '" + funcionario.getMatric() + "'";
-            
-            stmt.executeUpdate(sql); // Insert, Delete ou Update            
-            System.out.println(" Registro Excluído! ");            
+
+            // Constrói a consulta SQL para excluir um funcionário do banco de dados.
+            String sql = "DELETE FROM funcionario WHERE matric = '" + funcionario.getCpf() + "'";
+
+            stmt.executeUpdate(sql); // Executa a consulta SQL (Delete).
+            System.out.println(" Registro Excluído! ");
             conexao.close();
             return true;
-                   
-        } catch(ClassNotFoundException | SQLException ex){
-            System.out.println(" Erro: " + ex.toString());
-            return false;
-        }
-    }
-    
-    public boolean alterar(Funcionario funcionario) {
-        Connection conexao = null;
-        
-        try{
-            conexao = ConectaDB.conectar();
-            Statement stmt = conexao.createStatement();
-            
-            //UPDATE funcionario SET nome='João', cargo='Estagiário',end_cep='08544-225',end_comp='Casa 132' WHERE 123            
-            String sql = "UPDATE funcionario SET nome='" + funcionario.getNome() + "', cargo='" + funcionario.getCargo() +
-                                "',end_cep='" + funcionario.getEnderecoCep() + "',end_comp='" + funcionario.getEnderecoComp() +
-                                "' WHERE matric = '" + funcionario.getMatric() + "'";
-            
-            stmt.executeUpdate(sql); // Insert, Delete ou Update        
-            //System.out.println(" SQL: " + sql);
-            
-            System.out.println(" Registro Alterardo com sucesso! ");            
-            conexao.close();
-            return true;
-                   
-        } catch(ClassNotFoundException | SQLException ex){
+
+        } catch (ClassNotFoundException | SQLException ex) {
             System.out.println(" Erro: " + ex.toString());
             return false;
         }
     }
 
+    // Método para alterar os dados de um funcionário.
+    public boolean alterar(Funcionario funcionario) {
+        Connection conexao = null;
+
+        try {
+            conexao = ConectaDB.conectar();
+            Statement stmt = conexao.createStatement();
+
+            // Constrói a consulta SQL para atualizar os dados de um funcionário no banco de dados.
+            String sql = "UPDATE funcionario SET nome='" + funcionario.getNome() + "', cargo='" + funcionario.getCargo()
+                    + "', end_cep='" + funcionario.getEnderecoCep() + "', end_comp='" + funcionario.getEnderecoComp()
+                    + "', data_contrato='" + funcionario.getDataContrato() + "', salario=" + funcionario.getSalario()
+                    + " WHERE cpf= '" + funcionario.getCpf() + "'";
+
+            stmt.executeUpdate(sql); // Executa a consulta SQL (Update).
+            System.out.println(" Registro Alterado com sucesso! ");
+            conexao.close();
+            return true;
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(" Erro: " + ex.toString());
+            return false;
+        }
+    }
 }
