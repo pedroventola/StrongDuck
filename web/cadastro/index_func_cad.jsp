@@ -15,7 +15,7 @@
                 CPF: <input type="text" name="cpf"> <p>
                 Nome: <input type="text" name="nome"> <p>
                 Cargo: <input type="text" name="cargo"> <p>
-                Endereço CEP: <input type="text" name="end_cep"> <p>    
+                CEP: <input type="text" name="cep"> <p>    
                 Data de Contrato: <input type="date" name="dataContrato"> <p>
                 Salário: <input type="text" name="salario"> <p>
 

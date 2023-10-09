@@ -1,7 +1,8 @@
 <%-- 
-    Author : 
+    Author : Caio de Lima
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.dao.FuncionarioDAO"%>
 <%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,20 +19,22 @@
         
         String nome = request.getParameter("nome");
         String cargo = request.getParameter("cargo");
-        String Endereco = request.getParameter("endereco");
-        String end_comp = request.getParameter("end_comp");
+        String cep = request.getParameter("cep");
         String salario = request.getParameter("salario");
-        float idadeFloat = Float.parseFloat(salario);
-        
+        float salarioFloat = Float.parseFloat(salario);
+        String dataContrato = request.getParameter("dataContrato");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String cpf = request.getParameter("cpf");
+         
         Funcionario funcionario = new Funcionario();
-      
         funcionario.setNome(nome);
         funcionario.setCargo(cargo);
-        funcionario.setSalario(salario);
+        funcionario.setCep(cep);
+        funcionario.setSalario(salarioFloat);
+        funcionario.setDataContrato(dateFormat.parse(dataContrato));
+        funcionario.setCpf(cpf);
         
-      
-   
-        
+     
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
         if (funcionarioDAO.cadastrar(funcionario) == true){
