@@ -1,8 +1,3 @@
-<%-- 
-    Document   : funcionario_cons_id.jsp
-    Created on : 23/08/2023, 21:06:22
-    Author     : alunos
---%>
 
 <%@page import="model.dao.FuncionarioDAO"%>
 <%@page import="model.Funcionario"%>
@@ -11,26 +6,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Clínica [Funcionário]</title>
+        <title>Academia [Funcionário]</title>
     </head>
     <body>
-        <h1>Clínica - Consulta Funcionário</h1>
+        <h1>StrongDuck - Consulta Funcionário</h1>
         
         <%
-        String matric = request.getParameter("matric");
+        String cpf = request.getParameter("cpf");
         
         Funcionario funcionario = new Funcionario();
-        funcionario.setMatric(matric);
+        funcionario.setCpf(cpf);
         
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
-        if (funcionarioDAO.consultarMatric(funcionario) != null){
+        if (funcionarioDAO.consultarCpf(funcionario) != null){
             out.println("<br> Funcionario:");
-            out.println("<br>Matric:" + funcionario.getMatric());
+            out.println("<br>CPF:" + funcionario.getCpf());
             out.println("<br>Nome:" + funcionario.getNome());
             out.println("<br>Cargo:" + funcionario.getCargo());
-            out.println("<br>CEP:" + funcionario.getEnderecoCep());
-            out.println("<br>Complemento:" + funcionario.getEnderecoComp());
+            out.println("<br>CEP:" + funcionario.getCep());
+            out.println("<br>Salario:" + funcionario.getSalario());
+            out.println("<br>Data de Contrato:" + funcionario.getDataContrato());
         }else{
             out.println("<br> <b>Funcionario não encontrado! <b>");
         }       

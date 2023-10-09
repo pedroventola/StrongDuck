@@ -28,11 +28,8 @@
             String matricula = request.getParameter("matricula");
             int matriculaInt = Integer.parseInt(matricula);
             String plano = request.getParameter("plano");
-            String dataMatriculaStr = request.getParameter("dataMatricula");
+            String dataMatricula = request.getParameter("dataMatricula");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String periodo = request.getParameter("periodo");
-            int periodoInt = Integer.parseInt(periodo);
-
             
 
             Aluno aluno = new Aluno();
@@ -44,10 +41,9 @@
             aluno.setEnderecoCep(enderecoCep);
             aluno.setMatricula(matriculaInt);
             aluno.setPlano(plano);
-            aluno.setDataMatricula(dataMatricula);
-            aluno.setPeriodo(periodoInt);
-          
-          
+            aluno.setDataMatricula(dateFormat.parse(dataMatricula));
+            
+         
 
             AlunoDAO alunoDAO = new AlunoDAO();
 

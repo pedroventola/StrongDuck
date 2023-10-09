@@ -1,9 +1,8 @@
 <%-- 
-    Document   : func_cad_id.jsp
-    Created on : 30 de ago. de 2023, 19:55:43
-    Author     : adils
+    Author : Caio de Lima
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="model.dao.FuncionarioDAO"%>
 <%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,25 +10,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Clínica [Funcionário]</title>
+        <title>Academia [Funcionário]</title>
     </head>
     <body>
-        <h1>Clínica - Cadastro Funcionário</h1>
+        <h1>StrongDuck - Cadastro Funcionário</h1>
         
         <%
-        String matric = request.getParameter("matric");
+        
         String nome = request.getParameter("nome");
         String cargo = request.getParameter("cargo");
-        String end_cep = request.getParameter("end_cep");
-        String end_comp = request.getParameter("end_comp");
-        
+        String cep = request.getParameter("cep");
+        String salario = request.getParameter("salario");
+        float salarioFloat = Float.parseFloat(salario);
+        String dataContrato = request.getParameter("dataContrato");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String cpf = request.getParameter("cpf");
+         
         Funcionario funcionario = new Funcionario();
-        funcionario.setMatric(matric);
         funcionario.setNome(nome);
         funcionario.setCargo(cargo);
-        funcionario.setEnderecoCep(end_cep);
-        funcionario.setEnderecoComp(end_comp);
+        funcionario.setCep(cep);
+        funcionario.setSalario(salarioFloat);
+        funcionario.setDataContrato(dateFormat.parse(dataContrato));
+        funcionario.setCpf(cpf);
         
+     
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
         if (funcionarioDAO.cadastrar(funcionario) == true){

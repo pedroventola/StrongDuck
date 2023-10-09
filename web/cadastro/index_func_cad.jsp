@@ -1,7 +1,5 @@
 <%-- 
-    Document   : index
-    Created on : 23/08/2023, 20:27:33
-    Author     : alunos
+    Author  :  Pedro Ventola
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,17 +7,20 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Clínica [Funcionário]</title>
+        <title>Academia [Funcionário]</title>
     </head>
     <body>
-        <h1>Clínica - Cadastro Funcionário</h1>
-        <form name="FormCliCad" method="post" action="func_cad.jsp">           
-            Matrícula: <input type="text" name="matric"> <p>
-            Nome: <input type="text" name="nome"> <p>
-            Cargo: <input type="text" name="cargo"> <p>
-            Endereço CEP: <input type="text" name="end_cep"> <p>    
-            Complemento.: <input type="text" name="end_comp"> <p>    
-            <input type="reset" value="Limpar"> 
+        <h1>StrongDuck - Cadastro Funcionário</h1>
+        <form name="FormCadFunc" method="post" action="func_cad.jsp">           
+                CPF: <input type="text" name="cpf"> <p>
+                Nome: <input type="text" name="nome"> <p>
+                Cargo: <input type="text" name="cargo"> <p>
+                CEP: <input type="text" name="cep"> <p>    
+                Data de Contrato: <input type="date" name="dataContrato"> <p>
+                Salário: <input type="text" name="salario"> <p>
+
+
+                <input type="reset" value="Limpar"> 
             <input type="submit" value="Salvar"> <p>
         </form>
     </body>

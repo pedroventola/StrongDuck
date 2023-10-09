@@ -1,9 +1,3 @@
-<%-- 
-    Document   : func_cad_id.jsp
-    Created on : 30 de ago. de 2023, 19:55:43
-    Author     : adils
---%>
-
 <%@page import="model.dao.FuncionarioDAO"%>
 <%@page import="model.Funcionario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,16 +5,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Clínica [Funcionário]</title>
+        <title>Academia [Funcionário]</title>
     </head>
     <body>
-        <h1>Clínica - Excluir Funcionário</h1>
+        <h1>StrongDuck - Excluir Funcionário</h1>
         
         <%
-        String matric = request.getParameter("matric");
+        String cpf = request.getParameter("cpf");
         
         Funcionario funcionario = new Funcionario();
-        funcionario.setMatric(matric);
+        funcionario.setCpf(cpf);
         
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
