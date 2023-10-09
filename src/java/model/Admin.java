@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author pedro
+ * @author Pedro Ventola
  */
 public class Admin {
     

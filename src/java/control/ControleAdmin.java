@@ -9,7 +9,7 @@ import model.dao.AdminDAO;
 
 /**
  *
- * @author pedro
+ * @author Pedro Ventola
  */
 public class ControleAdmin {
     // Atributos
