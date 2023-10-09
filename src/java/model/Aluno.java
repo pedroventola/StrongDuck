@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-import java.sql.Date;
-
+import java.util.Date;
 /**
  *
  * @author Pedro Ventola
@@ -13,15 +12,21 @@ public class Aluno extends Pessoa {
     private int matricula;
     private String plano;
     private Date dataMatricula;
-    private int periodo;
-
+    
     // Construtor
-    public Aluno(String nome, String sexo, int idade, String telefone, String email, String enderecoCep, int matricula, String plano, Date dataMatricula,int periodo) {
+    public Aluno(String nome, String sexo, int idade, String telefone, String email, String enderecoCep, int matricula, String plano, Date dataMatricula) {
         super(nome, sexo, idade, telefone, email, enderecoCep);
         this.matricula = matricula;
         this.plano = plano;
         this.dataMatricula = dataMatricula;
-        this.periodo = periodo;
+        
+    }
+    
+    public Aluno() {
+        this.matricula = 0;
+        this.plano = "";
+        this.dataMatricula = new Date();
+       
     }
     
     
@@ -48,14 +53,6 @@ public class Aluno extends Pessoa {
 
     public void setDataMatricula(Date dataMatricula) {
         this.dataMatricula = dataMatricula;
-    }
-
-    public int getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(int periodo) {
-        this.periodo = periodo;
     }
 
     @Override

@@ -26,6 +26,15 @@ public class Pessoa {
         this.email = email;
         this.enderecoCep = enderecoCep;
     }
+    
+     public Pessoa() {
+        this.nome = "";
+        this.sexo = "";
+        this.idade = 0;
+        this.telefone = "";
+        this.email = "";
+        this.enderecoCep = "";
+    }
 
     // Getters e setters
     public String getNome() {

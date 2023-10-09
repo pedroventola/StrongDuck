@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import model.Aluno;
@@ -26,11 +27,14 @@ public class AlunoDAO {
         try {
             conexao = ConectaDB.conectar();
             Statement stmt = conexao.createStatement();
+            SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
+            String dataFormatada = dateFormater.format(aluno.getDataMatricula());
 
             // Constrói a consulta SQL para inserir um novo aluno no banco de dados.
-            String sql = "INSERT INTO aluno(matricula, nome, plano, data_matricula, curso, periodo, endereco_cep) "
-                    + "VALUES(" + aluno.getMatricula() + ",'" + aluno.getNome() + "','" + aluno.getPlano()
-                    + "','" + aluno.getDataMatricula() + "','" + "'," + aluno.getPeriodo() + ",'" + aluno.getEnderecoCep() + "')";
+            String sql = "INSERT INTO aluno (matricula, nome, plano, data_matricula, email, idade, sexo, cep) " 
+                    + "VALUES ('" + aluno.getMatricula() + "', '" + aluno.getNome() + "', '" 
+                    + aluno.getPlano() + "', '" + dataFormatada + "', '" + aluno.getEmail() 
+                    + "', '" + aluno.getIdade() + "', '" + aluno.getSexo() + "', '" + aluno.getEnderecoCep() + "')";
 
             stmt.executeUpdate(sql); // Executa a consulta SQL (Insert).
             System.out.println(" Registro Inserido! ");
