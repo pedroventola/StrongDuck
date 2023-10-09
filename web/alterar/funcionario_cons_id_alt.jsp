@@ -1,4 +1,4 @@
-
+<%-- Author : Pedro Ventola --%>
 
 <%@page import="model.dao.FuncionarioDAO"%>
 <%@page import="model.Funcionario"%>
