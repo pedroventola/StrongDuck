@@ -38,9 +38,9 @@
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         
         if (funcionarioDAO.cadastrar(funcionario) == true){
-            out.println("<br> Funcionario cadastrado com sucesso!");
+            out.println("<br> Funcionário cadastrado com sucesso!");
         }else{
-            out.println("<br> <b>Funcionario não cadastrado! <b>");
+            out.println("<br> <b>Funcionário não cadastrado! <b>");
         }       
         
         %>
