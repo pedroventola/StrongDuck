@@ -25,7 +25,7 @@ public class FuncionarioDAO {
             // Constrói a consulta SQL para inserir um novo funcionário no banco de dados.
             String sql = "INSERT INTO funcionario(cpf, nome, cargo, cep, data_contrato, salario) "
                     + "VALUES('" + funcionario.getCpf() + "','" + funcionario.getNome() + "','" + funcionario.getCargo()
-                    + "','" + funcionario.getEnderecoCep() + "','"
+                    + "','" + funcionario.getCep() + "','"
                     + dataFormatada + "','" + funcionario.getSalario() + "')";
 
             stmt.executeUpdate(sql); // Executa a consulta SQL (Insert).
